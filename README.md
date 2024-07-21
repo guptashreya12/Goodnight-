@@ -2,11 +2,6 @@
 
 GoodNight is a comprehensive solution designed to enhance sleep quality through the integration of ML predictions and personalized AI chat support. Our mission is to transform the way individuals approach their nighttime routines, fostering healthier sleep habits for all.
 
-![GoodNight Logo](static/photos/logo.jpg)
-![User Interface](static/photos/homepage.png)
-![Sleep Blogs](static/photos/blogs.png)
-![Sleep Insights](static/photos/chatbot.png)
-![Sleep Prediction](static/photos/prediction.png)
 
 
 ## 💻 Toolchain
