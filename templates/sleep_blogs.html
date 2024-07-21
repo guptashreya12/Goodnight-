@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleep Blogs</title>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/styles1.css') }}"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        /* Navbar styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1rem;
+            background-color:  #281d1d;
+            box-shadow: 0 4px 6px rgba(243, 241, 241, 0.847);
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 1rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.4rem;
+        }
+
+        nav ul li {
+            margin: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fdfdfd;
+            font-weight: 600;
+        }
+
+        /* Section styles */
+        .section {
+            text-align: center;
+            padding: 3rem 1rem;
+            background-color: #2a263d;
+            color: white;
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .slider-item {
+            background-color: #272525;;
+            color: #ffffff;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            flex: 0 0 30%;
+            margin-right: 1.5rem;
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+
+        .slider-item img {
+            width: 100%;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .slider-info {
+            padding: 1rem;
+        }
+
+        .slider-info h3 {
+            font-size: 1.2rem;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .slider-info p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .slider-info a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .arrow {
+            cursor: pointer;
+            font-size: 2rem;
+            color: white;
+            padding: 0 1rem;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar"> 
+        <div class="logo">
+            <img src="{{ url_for('static', filename='photos/logo.png') }}" alt="Sleep Prediction Logo">
+            <span class="goodnight">Sleep Blogs</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('predict_page') }}">Predict Sleep</a></li>
+                <li><a href="{{ url_for('sleep_blogs_page') }}">Sleep Blogs</a></li>
+                <li><a href="#">Chatbot</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <section class="section">
+        <h2>Recent Posts</h2>
+        <div class="slider-container">
+            <div class="arrow" onclick="slideLeft('recent-posts')">&#10094;</div>
+            <div class="slider" id="recent-posts">
+                <div class="slider-item">
+                    <img src="{{ url_for('static', filename='photos/post1.jpg') }}" alt="Post 1">
+                    <div class="slider-info">
+                        <h3><a href="https://www.bettersleep.com/blog/10-sleeping-tips-that-will-help-you-sleep-better">10 Sleeping tips that helps you sleeps faster</a></h3>
+                        <p>Wellness / News - September 13, 2023</p>
+                    </div>
+                </div>
+                <div class="slider-item">
+                    <img src="{{ url_for('static', filename='photos/post3.jpg') }}" alt="Post 2">
+                    <div class="slider-info">
+                        <h3><a href="https://www.bettersleep.com/blog/dreaming-with-dogs-meaning">Dreaming of Dogs: What It Means</a></h3>
+                        <p>Sleep - October 19, 2023</p>
+                    </div>
+                </div>
+                <div class="slider-item">
+                    <img src="{{ url_for('static', filename='photos/post2.jpg') }}" alt="Post 3">
+                    <div class="slider-info">
+                        <h3><a href="https://www.bettersleep.com/blog/10-minute-meditations-to-try">The 20 Best 10-Minute Meditations to Try</a></h3>
+                        <p>Wellness / News - April 20, 2022</p>
+                    </div>
+                </div>
+                <div class="slider-item">
+                    <img src="{{ url_for('static', filename='photos/post5.jpg') }}" alt="Post 4">
+                    <div class="slider-info">
+                        <h3><a href="https://www.bettersleep.com/blog/10-questions-with-a-creative-content-producer-aster-j-haile">10 Questions with a Creative Content Producer</a></h3>
+                        <p>Health / Tips - May 15, 2023</p>
+                    </div>
+                </div>
+                <div class="slider-item">
+                    <img src="{{ url_for('static', filename='photos/post4.jpg') }}" alt="Post 5">
+                    <div class="slider-info">
+                        <h3><a href="https://www.bettersleep.com/blog/852hz-solfeggio-frequency-benefits">The Benefits of 852 HZ frequency</a></h3>
+                        <p>Health / Research - June 5, 2023</p>
+                    </div>
+                </div>
+            </div>
+            <div class="arrow" onclick="slideRight('recent-posts')">&#10095;</div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Lifestyle</h2>
+        <div class="slider-container">
+            <div class="arrow" onclick="slideLeft('lifestyle')">&#10094;</div>
+            <div class="slider" id="lifestyle">
+                <div class="slider-item">
+                    <img src="{{ url_for('static', filename='photos/lifestyle1.jpg') }}" alt="Lifestyle 2">
+                    <div class="slider-info">
+                        <h3><a href="#">How to Balance Work and Life</a></h3>
+                        <p>February 15, 2023</p>
+                    </div>
+                </div>
+                <div class="slider-item">
+                    <img src="{{ url_for('static', filename='photos/lifestyle2.jpg') }}" alt="Lifestyle 1">
+                    <div class="slider-info">
+                        <h3><a href="https://www.bettersleep.com/blog/5-steps-to-create-the-perfect-meditation-space">5 Steps to Create a Perfect Meditation Space</a></h3>
+                        <p>January 10, 2023</p>
+                    </div>
+                </div>
+                <div class="slider-item">
+                    <img src="{{ url_for('static', filename='photos/lifestyle3.jpg') }}" alt="Lifestyle 3">
+                    <div class="slider-info">
+                        <h3><a href="https://www.bettersleep.com/blog/5-tips-for-managing-workplace-stress">5 Tips for Managing Workplace Stress</a></h3>
+                        <p>March 20, 2023</p>
+                    </div>
+                </div>
+                <div class="slider-item">
+                    <img src="{{ url_for('static', filename='photos/lifestyle4.jpg') }}" alt="Lifestyle 4">
+                    <div class="slider-info">
+                        <h3><a href="https://www.bettersleep.com/blog/5-ways-to-arrange-your-bedroom-for-better-sleep">Setting Up your Bedroom for Better Sleep </a></h3>
+                        <p>April 10, 2023</p>
+                    </div>
+                </div>
+                <div class="slider-item">
+                    <img src="{{ url_for('static', filename='photos/lifestyle5.jpg') }}" alt="Lifestyle 5">
+                    <div class="slider-info">
+                        <h3><a href="https://www.bettersleep.com/blog/5-gentle-exercises-to-try-before-sleep">5 Gentle exercises to Try Before Sleep</a></h3>
+                        <p>May 15, 2023</p>
+                    </div>
+                </div>
+            </div>
+            <div class="arrow" onclick="slideRight('lifestyle')">&#10095;</div>
+        </div>
+    </section>
+
+
+    <section class="section">
+        <h2>Sleep Disorder</h2>
+        <div class="slider-container">
+            <div class="arrow" onclick="slideLeft('lifestyle')">&#10094;</div>
+            <div class="slider" id="lifestyle">
+                <div class="slider-item">
+                    <img src="{{ url_for('static', filename='photos/disorder1.jpg') }}" alt="Lifestyle 1">
+                    <div class="slider-info">
+                        <h3><a href="https://www.sleepiest.com/blog/sleep-disorders/sleep-apnea-causes-symptoms-treatments">Sleep Apnea: Causes, Symptoms, and Treatments</a></h3>
+                        <p>January 10, 2023</p>
+                    </div>
+                </div>
+                <div class="slider-item">
+                    <img src="{{ url_for('static', filename='photos/disorder2.jpg') }}" alt="Lifestyle 2">
+                    <div class="slider-info">
+                        <h3><a href="https://www.sleepiest.com/blog/sleep-disorders/insomnia-symptoms-causes-and-treatment-options">Insomnia: Symptoms, Causes, and Treatment Options for a Better Night's Sleep</a></h3>
+                        <p>February 15, 2023</p>
+                    </div>
+                </div>
+                <div class="slider-item">
+                    <img src="{{ url_for('static', filename='photos/disorder3.jpg') }}" alt="Lifestyle 3">
+                    <div class="slider-info">
+                        <h3><a href="https://www.sleepiest.com/blog/sleep-disorders/sleep-apnea-and-heart-disease">The Connection between Sleep Apnea and Heart Disease:</a></h3>
+                        <p>March 20, 2023</p>
+                    </div>
+                </div>
+                <div class="slider-item">
+                    <img src="{{ url_for('static', filename='photos/disorder4.jpg') }}" alt="Lifestyle 4">
+                    <div class="slider-info">
+                        <h3><a href="https://www.sleepiest.com/blog/sleep-disorders/the-science-of-sleepwalking">The Science of Sleepwalking:</a></h3>
+                        <p>April 10, 2023</p>
+                    </div>
+                </div>
+                <div class="slider-item">
+                    <img src="{{ url_for('static', filename='photos/disorder5.jpg') }}" alt="Lifestyle 5">
+                    <div class="slider-info">
+                        <h3><a href="https://www.sleepiest.com/blog/sleep-disorders/top-tips-for-stopping-snoring">How to Stop Snoring: Expert Tips for a Quieter Night's Sleep</a></h3>
+                        <p>May 15, 2023</p>
+                    </div>
+                </div>
+            </div>
+            <div class="arrow" onclick="slideRight('lifestyle')">&#10095;</div>
+        </div>
+    </section>
+
+    <script>
+        function slideLeft(sliderId) {
+            var slider = document.getElementById(sliderId);
+            slider.scrollLeft -= 300;
+        }
+
+        function slideRight(sliderId) {
+            var slider = document.getElementById(sliderId);
+            slider.scrollLeft += 300;
+        }
+    </script>
+</body>
+</html>

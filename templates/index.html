@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleep Prediction</title>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/styles1.css') }}"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f0f0;
+            color: #282626;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #5555e1;
+            outline: none;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #5555e1;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.25rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-group button:hover {
+            background-color: #3333aa;
+        }
+
+        .navbar {
+     display: flex; 
+     justify-content: space-between;
+    align-items: left; 
+    padding: 1rem 1rem; 
+    background-color: #281d1d;
+     box-shadow: 0 4px 6px rgba(243, 241, 241, 0.847);
+    position: fixed;
+     width: 97%;  
+    top: 0;
+    left: 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 1rem;
+}
+
+.goodnight {
+    font-family: 'Source Sans Pro';
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.4rem;
+        }
+
+        nav ul li {
+            margin: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fdfdfd;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='photos/logo.png') }}" alt="Sleep Cycle Logo">
+                <span class="goodnight">Goodnight</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('predict_page') }}">Sleep Prediction</a></li>
+                    <li><a href="{{ url_for('sleep_blogs_page') }}">Sleep Blogs</a></li>
+                    <li><a href="#">Chatbot</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="form-container">
+
+
+
+
+
+
+
+        <h2>Sleep Prediction</h2>
+        <form id="inputForm">
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" placeholder="Age" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender" required>
+                    <option value="" disabled selected>Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="sleep_duration">Sleep Duration (hours)</label>
+                <input type="number" id="sleep_duration" name="sleep_duration" placeholder="Sleep Duration (hours)" required>
+            </div>
+            <div class="form-group">
+                <label for="quality_of_sleep">Quality of Sleep (scale 1-10)</label>
+                <input type="number" id="quality_of_sleep" name="quality_of_sleep" placeholder="Quality of Sleep (scale 1-10)" required>
+            </div>
+            <div class="form-group">
+                <label for="physical_activity_level">Physical Activity Level(scale 30-100)</label>
+                <input type="number" id="physical_activity_level" name="physical_activity_level" placeholder="Physical Activity Level" required>
+            </div>
+            <div class="form-group">
+                <label for="stress_levels">Stress Levels(scale 1-10)</label>
+                <input type="number" id="stress_levels" name="stress_levels" placeholder="Stress Levels" required>
+            </div>
+            <div class="form-group">
+                <label for="bmi">BMI</label>
+                <select id="bmi" name="bmi" required>
+                    <option value="" disabled selected>BMI</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Obese">Obese</option>
+                    <option value="Overweight">Overweight</option>
+                    <option value="Normal Weight">Normal Weight</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="blood_pressure_upper">Upper Blood Pressure</label>
+                <input type="number" id="blood_pressure_upper" name="blood_pressure_upper" placeholder="Upper Blood Pressure" required>
+            </div>
+            <div class="form-group">
+                <label for="blood_pressure_lower">Lower Blood Pressure</label>
+                <input type="number" id="blood_pressure_lower" name="blood_pressure_lower" placeholder="Lower Blood Pressure" required>
+            </div>
+            <div class="form-group">
+                <label for="heart_rate">Heart Rate</label>
+                <input type="number" id="heart_rate" name="heart_rate" placeholder="Heart Rate" required>
+            </div>
+            <div class="form-group">
+                <label for="daily_steps">Daily Steps</label>
+                <input type="number" id="daily_steps" name="daily_steps" placeholder="Daily Steps" required>
+            </div>
+            <div class="form-group">
+                <label for="occupation">Occupation</label>
+                <select id="occupation" name="occupation" required>
+                    <option value="" disabled selected>Occupation</option>
+                    <option value="Accountant">Accountant</option>
+                    <option value="Doctor">Doctor</option>
+                    <option value="Engineer">Engineer</option>
+                    <option value="Lawyer">Lawyer</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Nurse">Nurse</option>
+                    <option value="Sales Representative">Sales Representative</option>
+                    <option value="Salesperson">Salesperson</option>
+                    <option value="Scientist">Scientist</option>
+                    <option value="Software Engineer">Software Engineer</option>
+                    <option value="Teacher">Teacher</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit">Predict</button>
+            </div>
+        </form>
+        <div id="result">1-insoniea</div>
+        <canvas id="predictionChart" width="400" height="400"></canvas>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
